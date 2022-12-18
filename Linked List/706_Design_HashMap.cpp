@@ -23,6 +23,7 @@ public:
         ListNode *newNode = new ListNode;
         newNode->key = key;
         newNode->value = value;
+        newNode->next = NULL;
 
         if (head == NULL)
         {
@@ -39,9 +40,17 @@ public:
                     {
 
                         tNode->value = value;
+                        // delete newNode;
                         return;
                     }
                     tNode = tNode->next;
+                }
+                if (tNode->key == key)
+                {
+
+                    tNode->value = value;
+                    // delete newNode;
+                    return;
                 }
                 tNode->next = newNode;
             }
@@ -98,7 +107,7 @@ public:
         ListNode *tNode = head;
         while (tNode != NULL)
         {
-            cout << tNode->val << "->";
+            cout << tNode->value << "->";
             tNode = tNode->next;
         }
         cout << "NULL" << endl;
@@ -116,7 +125,16 @@ public:
 int main()
 {
     MyHashMap *obj = new MyHashMap();
-    obj->put(1, 2);
+    obj->put(1, 1);
+    obj->put(2, 2);
+    // obj->get(1);
+    // cout <<
+    // obj->get(3);
+    obj->put(2, 1);
+    //  obj->get(2);
+    //  obj->remove(2);
+    //   obj->get(2);
+
     obj->displayList();
 
     return 0;
